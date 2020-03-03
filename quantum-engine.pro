@@ -17,15 +17,12 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
         main.cpp \
-        qt/mainwindow.cpp \
         qt/vulkanwindow.cpp
 
 FORMS += \
-    qt/mainwindow.ui \
     qt/vulkanwindow.ui
 
 HEADERS += \
-    qt/mainwindow.h \
     qt/vulkanwindow.h
 
 
