@@ -19,9 +19,6 @@ SOURCES += \
         main.cpp \
         qt/vulkanwindow.cpp
 
-FORMS += \
-    qt/vulkanwindow.ui
-
 HEADERS += \
     qt/vulkanwindow.h
 

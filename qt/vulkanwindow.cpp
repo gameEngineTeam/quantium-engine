@@ -1,5 +1,4 @@
 #include "vulkanwindow.h"
-#include "ui_vulkanwindow.h"
 
 QVulkanWindowRenderer *VulkanWindow::createRenderer()
 {
