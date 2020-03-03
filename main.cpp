@@ -1,6 +1,9 @@
-#include <iostream>
+#include <QCoreApplication>
+#include <QDebug>
 
-int main() {
-	std::cout << "Game Engine Init" << std::endl;
-	return 0;
+int main(int argc, char *argv[])
+{
+    QCoreApplication a(argc, argv);
+    qInfo() << "Game Engine Init";
+    return a.exec();
 }
