@@ -8,12 +8,12 @@ QVulkanWindowRenderer *VulkanWindow::createRenderer()
 VulkanRenderer::VulkanRenderer(QVulkanWindow *w)
     : m_window(w)
 {
+    m_window->setTitle("Quantum");
 }
 
 void VulkanRenderer::initResources()
 {
     qDebug("initResources");
-
     m_devFuncs = m_window->vulkanInstance()->deviceFunctions(m_window->device());
 }
 
