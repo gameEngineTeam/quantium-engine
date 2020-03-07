@@ -17,10 +17,12 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     main.cpp \
-    qt/vulkanwindow.cpp
+    qt/vulkanwindow.cpp \
+    engine/core/core.cpp
 
 HEADERS += \
-    qt/vulkanwindow.h
+    qt/vulkanwindow.h \
+    engine/engine_core.h
 
 
 # Default rules for deployment.

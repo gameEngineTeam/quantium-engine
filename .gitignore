@@ -60,7 +60,7 @@ Thumbs.db
 *vcxproj.*
 
 # Visual Studio Code configuration settings
-/.vscode
+.vscode/settings.json
 
 # MinGW generated files
 *.Debug
