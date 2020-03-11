@@ -2,6 +2,7 @@
 #include <QDebug>
 #include <QVulkanWindow>
 #include "qt/vulkanwindow.h"
+#include "engine/core/events.cpp"
 
 class Engine {
     private:
