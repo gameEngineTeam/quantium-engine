@@ -2,7 +2,7 @@
 #include <QDebug>
 #include <QVulkanWindow>
 #include "qt/vulkanwindow.h"
-#include "engine/core/events.cpp"
+#include "engine/core/events.h"
 
 class Engine {
     private:
@@ -18,6 +18,13 @@ class Engine {
 	    height = windowHeight;
 
 	    isRunning = runOnStart;
+	    
+	    using namespace quantum_engine::event;
+
+	    qInfo() << "Initalizing keypress listener";
+	    keypress keypressEvent;
+	    qInfo() << "Post init, keypress";
+
 
 	    qInfo() << "Engine Instance Created";
 	}
