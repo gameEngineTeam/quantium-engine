@@ -2,6 +2,7 @@
 #include <QDebug>
 #include <QVulkanWindow>
 #include "qt/vulkanwindow.h"
+
 #include "engine/core/events.h"
 
 class Engine {
@@ -19,10 +20,11 @@ class Engine {
 
 	    isRunning = runOnStart;
 	    
-	    using namespace quantum_engine::event;
+	    using namespace quantum_engine::Event;
 
 	    qInfo() << "Initalizing keypress listener";
-	    keypress keypressEvent;
+	    KeyPress keypressHandler( true );
+	    
 	    qInfo() << "Post init, keypress";
 
 
