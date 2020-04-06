@@ -43,8 +43,8 @@ class Engine {
 	    vulkanWindow.show();
 
         // Keypress-event object
-        quantum_engine::Event::KeyPress keypressHandler();
-        keypressHandler->setFocus();
+        quantum_engine::Event::KeyPress * keypressHandler = new quantum_engine::Event::KeyPress();
+        keypressHandler->enableFocus();
 
 	    exitcode = qtApp.exec();
 	    return exitcode;
