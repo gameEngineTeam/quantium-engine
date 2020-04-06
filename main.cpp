@@ -42,7 +42,9 @@ class Engine {
 	    vulkanWindow.resize( width, height );
 	    vulkanWindow.show();
 
+        // Keypress-event object
         quantum_engine::Event::KeyPress keypressHandler();
+        keypressHandler->setFocus();
 
 	    exitcode = qtApp.exec();
 	    return exitcode;
