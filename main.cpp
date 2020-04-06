@@ -19,15 +19,6 @@ class Engine {
 	    height = windowHeight;
 
 	    isRunning = runOnStart;
-	    
-	    using namespace quantum_engine::Event;
-
-	    qInfo() << "Initalizing keypress listener";
-	    KeyPress keypressHandler( true );
-	    
-	    qInfo() << "Post init, keypress";
-
-
 	    qInfo() << "Engine Instance Created";
 	}
 
@@ -50,6 +41,8 @@ class Engine {
 
 	    vulkanWindow.resize( width, height );
 	    vulkanWindow.show();
+
+        quantum_engine::Event::KeyPress keypressHandler();
 
 	    exitcode = qtApp.exec();
 	    return exitcode;
