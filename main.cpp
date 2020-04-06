@@ -3,7 +3,7 @@
 #include <QVulkanWindow>
 #include "qt/vulkanwindow.h"
 
-#include "engine/core/events.h"
+#include "engine/core/events.cpp"
 
 class Engine {
     private:
@@ -30,6 +30,11 @@ class Engine {
 	    QApplication qtApp(argc, argv); 
 	    qInfo() << "Initializing";
 
+        // Keypress-event object
+        quantum_engine::Event::KeyPress * keypressHandler = new quantum_engine::Event::KeyPress();
+        // quantum_engine::Event::KeyPress keypressHandler();
+        keypressHandler->enableFocus();
+
 	    QVulkanInstance vulkanInstance;
 	    vulkanInstance.setLayers(QByteArrayList() << "VK_LAYER_LUNARG_standard_validation");
 
@@ -41,10 +46,6 @@ class Engine {
 
 	    vulkanWindow.resize( width, height );
 	    vulkanWindow.show();
-
-        // Keypress-event object
-        quantum_engine::Event::KeyPress * keypressHandler = new quantum_engine::Event::KeyPress();
-        keypressHandler->enableFocus();
 
 	    exitcode = qtApp.exec();
 	    return exitcode;
