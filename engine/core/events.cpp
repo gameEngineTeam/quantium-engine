@@ -7,12 +7,12 @@ using namespace quantum_engine::Event;
 
 void KeyPress::enableFocus() {
     qInfo() << "Keyboard focus";
-	this->setFocus();
+    this->setFocus();
 
-	qInfo() << "Focus widget: " << focusWidget();
-	qInfo() << "this: " << this;
+    qInfo() << "Focus widget: " << focusWidget();
+    qInfo() << "this: " << this;
 }
 
 void KeyPress::keyPressEvent( QKeyEvent * event ) {
-	qInfo() << "Keypress: " << event->key();
+    qInfo() << "Keypress: " << event->key();
 }

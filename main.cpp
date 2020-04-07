@@ -4,52 +4,54 @@
 #include "qt/vulkanwindow.h"
 
 #include "engine/core/events.cpp"
+using namespace quantum_engine::Event;
 
 class Engine {
     private:
-	unsigned int width = 1600;
-	unsigned int height = 900;
-	bool isRunning = false;
+    unsigned int width = 1600;
+    unsigned int height = 900;
+    bool isRunning = false;
 
     public:
-	int exitcode = 0;
+    int exitcode = 0;
 
-	Engine( unsigned int windowWidth, unsigned int windowHeight, bool runOnStart ) {
-	    width = windowWidth;
-	    height = windowHeight;
+    Engine( unsigned int windowWidth, unsigned int windowHeight, bool runOnStart ) {
+        width = windowWidth;
+        height = windowHeight;
 
-	    isRunning = runOnStart;
-	    qInfo() << "Engine Instance Created";
-	}
+        isRunning = runOnStart;
+        qInfo() << "Engine Instance Created";
+    }
 
-	~ Engine() {
-	    qInfo() << "Engine Instance Deinitialization";
-	}	
+    ~ Engine() {
+        qInfo() << "Engine Instance Deinitialization";
+    }	
 
-	int Initalize( int argc, char * argv[] ) {
-	    QApplication qtApp(argc, argv); 
-	    qInfo() << "Initializing";
+    int Initalize( int argc, char * argv[] ) {
+        QApplication qtApp(argc, argv); 
+        qInfo() << "Initializing";
 
-        // Keypress-event object
-        quantum_engine::Event::KeyPress * keypressHandler = new quantum_engine::Event::KeyPress();
-        // quantum_engine::Event::KeyPress keypressHandler();
-        keypressHandler->enableFocus();
+        QVulkanInstance vulkanInstance;
+        vulkanInstance.setLayers(QByteArrayList() << "VK_LAYER_LUNARG_standard_validation");
 
-	    QVulkanInstance vulkanInstance;
-	    vulkanInstance.setLayers(QByteArrayList() << "VK_LAYER_LUNARG_standard_validation");
+        if ( !vulkanInstance.create() )
+        qFatal("Failed to create Vulkan instance: %d", vulkanInstance.errorCode());
 
-	    if ( !vulkanInstance.create() )
-		qFatal("Failed to create Vulkan instance: %d", vulkanInstance.errorCode());
+        VulkanWindow vulkanWindow; 
+        vulkanWindow.setVulkanInstance( &vulkanInstance );
 
-	    VulkanWindow vulkanWindow; 
-	    vulkanWindow.setVulkanInstance( &vulkanInstance );
+        vulkanWindow.resize( width, height );
 
-	    vulkanWindow.resize( width, height );
-	    vulkanWindow.show();
+        // "hook" the keypress handler to it
+        // VulkanWindow::keyPressEvent( QKeyEvent event ) : KeyPress::keyPressEvent( key ) {}
 
-	    exitcode = qtApp.exec();
-	    return exitcode;
-	}
+        KeyPress keypressHandler;
+
+        vulkanWindow.show();
+
+        exitcode = qtApp.exec();
+        return exitcode;
+    }
 };
 
 int main(int argc, char *argv[]) {
