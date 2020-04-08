@@ -39,12 +39,6 @@ class Engine {
 
         vulkanWindow.resize( width, height );
 
-        // "hook" the keypress handler to it
-        
-
-        // KeyPress * keypressHandler = new KeyPress();
-		// keypressHandler->show();
-
         vulkanWindow.show();
 
         exitcode = qtApp.exec();
