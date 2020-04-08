@@ -4,7 +4,6 @@
 #include <QVulkanWindow>
 #include <QVulkanDeviceFunctions>
 
-
 namespace Ui {
 class VulkanWindow;
 }
@@ -31,6 +30,10 @@ class VulkanWindow : public QVulkanWindow
 {
 public:
     QVulkanWindowRenderer *createRenderer() override;
+
+protected: // input
+    void keyPressEvent( QKeyEvent * );
+    void mouseMoveEvent( QMouseEvent * );
 };
 
 

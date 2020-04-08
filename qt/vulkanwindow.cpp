@@ -55,3 +55,15 @@ void VulkanRenderer::startNextFrame()
     m_window->frameReady();
     m_window->requestUpdate(); // render continuously, throttled by the presentation rate
 }
+
+
+// Input stuff
+#include "../engine/core/event.cpp"
+using namespace quantum_engine::Event::Input; 
+void VulkanWindow::keyPressEvent( QKeyEvent * event ) {
+    OnKeyPress( event );
+}
+
+void VulkanWindow::mouseMoveEvent( QMouseEvent * event ) {
+    
+}

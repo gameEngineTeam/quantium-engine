@@ -3,9 +3,6 @@
 #include <QVulkanWindow>
 #include "qt/vulkanwindow.h"
 
-#include "engine/core/events.cpp"
-using namespace quantum_engine::Event;
-
 class Engine {
     private:
     unsigned int width = 1600;
@@ -43,9 +40,10 @@ class Engine {
         vulkanWindow.resize( width, height );
 
         // "hook" the keypress handler to it
-        // VulkanWindow::keyPressEvent( QKeyEvent event ) : KeyPress::keyPressEvent( key ) {}
+        
 
-        KeyPress keypressHandler;
+        // KeyPress * keypressHandler = new KeyPress();
+		// keypressHandler->show();
 
         vulkanWindow.show();
 
