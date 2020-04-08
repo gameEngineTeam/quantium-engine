@@ -2,17 +2,19 @@
 #define INPUTMAP_H
 
 #include <QDebug>
+#include <QKeyEvent>
 #include <map>
 
 namespace quantum_engine :: Input {
-	typedef void (*func)();
+	typedef void (*func)(QKeyEvent *);
 	namespace Config {
-		std::map<int, func> InputMap;
+		std::map<int, std::string> InputFuncMap;
+		std::map<std::string, func> InputFuncPointMap;
 
 		void LoadConfig( std::string file ); 
 		void SaveConfig( std::string file );
 	}
-	void runInputFunc( int );
+	void runInputFunc( std::string s = "none" );
 }
 
 #endif // INPUTMAP_H
